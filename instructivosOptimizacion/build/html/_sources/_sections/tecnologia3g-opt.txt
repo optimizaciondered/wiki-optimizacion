@@ -1,4 +1,4 @@
-TECNOLOGIA 3G
+TECNOLOGÍA 3G
 =============
 
 .. toctree::

@@ -1,4 +1,4 @@
-TECNOLOGIA 2G
+TECNOLOGíA 2G
 =============
 
 .. toctree::

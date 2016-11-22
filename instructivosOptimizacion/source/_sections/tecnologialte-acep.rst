@@ -1,4 +1,4 @@
-TECNOLOGIA LTE
+TECNOLOGÍA LTE
 ==============
 
 .. toctree::
