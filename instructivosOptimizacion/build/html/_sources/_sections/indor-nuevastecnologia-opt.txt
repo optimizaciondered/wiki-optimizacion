@@ -11,6 +11,9 @@ Optimizar las soluciones Indoor y nuevas tecnologías de red de acceso, analizan
 1.	DOCUMENTACIÓN DAS 
 ---------------------
 
+1.2. COMBA
+**********
+
 .. _Training_CLAR_AR:  ../_static/images/das/Training_CLAR_AR.pptx
 .. _Troubleshooting_DAS: ../_static/images/das/Troubleshooting_DAS.pptx
 .. _Argentina_CMS_Training_ESP: ../_static/images/das/Argentina_CMS_Training_ESP.pptx
@@ -31,8 +34,6 @@ Optimizar las soluciones Indoor y nuevas tecnologías de red de acceso, analizan
 
 	+	**POR ETH** Ver link: DAS_v6_
 
-1.2. COMBA
-**********
 
 1.3. COMMSCOPE
 **************
