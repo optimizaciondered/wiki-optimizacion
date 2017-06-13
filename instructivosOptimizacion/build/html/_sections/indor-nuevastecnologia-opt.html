@@ -15,6 +15,8 @@
   
     <link rel="shortcut icon" href="../_static/icono_pag.ico"/>
   
+  
+  
 
   
 
@@ -32,6 +34,9 @@
   
 
   
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="WIKI OPTIMIZACIÓN- INSTRUCTIVOS DE TRABAJO  documentation" href="../index.html"/>
         <link rel="up" title="OPTIMIZACIÓN" href="../optimizacion.html"/>
         <link rel="next" title="TECNOLOGíA 2G" href="tecnologia2g-opt.html"/>
@@ -44,6 +49,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -83,7 +89,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../optimizacion.html">OPTIMIZACIÓN</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">     1.      INDOOR Y NUEVAS TECNOLOGÍAS</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#documentacion-das">1.      DOCUMENTACIÓN DAS</a><ul>
@@ -91,7 +100,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#commscope">1.3. COMMSCOPE</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#femto-cell">2. FEMTO CELL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#femto-cell">2. FEMTO CELL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#guia-para-aceptacion">2.1. Guia para Aceptacion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#spidercloud">3. SPIDERCLOUD</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tecnologia2g-opt.html">     2. TECNOLOGÍA 2G</a></li>
@@ -117,8 +130,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">WIKI OPTIMIZACIÓN- INSTRUCTIVOS DE TRABAJO</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WIKI OPTIMIZACIÓN- INSTRUCTIVOS DE TRABAJO</a>
+        
       </nav>
 
 
@@ -127,23 +142,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../optimizacion.html">OPTIMIZACIÓN</a> &raquo;</li>
-      
-    <li>INDOOR Y NUEVAS TECNOLOGÍAS</li>
+        
+      <li>INDOOR Y NUEVAS TECNOLOGÍAS</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -152,7 +184,7 @@
   <div class="section" id="indoor-y-nuevas-tecnologias">
 <h1>INDOOR Y NUEVAS TECNOLOGÍAS<a class="headerlink" href="#indoor-y-nuevas-tecnologias" title="Permalink to this headline">¶</a></h1>
 <p>Optimizar las soluciones Indoor y nuevas tecnologías de red de acceso, analizando el impacto de la implementación de cada una y corroborar que se cumpla con los estándares de calidad durante todo el proceso.</p>
-<img alt="../_images/macroflujo.png" class="align-center" src="../_images/macroflujo.png" />
+<img alt="../_images/macroflujo1.png" class="align-center" src="../_images/macroflujo1.png" />
 <div class="section" id="documentacion-das">
 <h2>1.      DOCUMENTACIÓN DAS<a class="headerlink" href="#documentacion-das" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="comba">
@@ -184,12 +216,39 @@ Ver Link: <a class="reference external" href="../_static/images/das/Troubleshoot
 <h2>2. FEMTO CELL<a class="headerlink" href="#femto-cell" title="Permalink to this headline">¶</a></h2>
 <p><span style="color: #ff0000;"><strong>CONSIDERACIONES GENERALES</strong></span></p><p>Debido a que las herramientas necesarias para la gestión de FEMTO son varias y requieren distintas versiones de JAVA (que muchas veces no son compatibles con el resto de las herramientas que utilizamos), se instalaron todas en el Servidor SGD4. Por esto antes de comenzar con la gestión de las FC, se deben solicitar los accesos correspondientes. Estos usuarios se solicitan vía Mail a Emiliano Flores / Tomas Ferreyra:</p>
 <ul class="simple">
-<li>SGD4</li>
+<li>SGD4 (user y pass de red pero debe tener permisos)</li>
 <li>Acceso al WMS (este mismo se utilizará para ingresar al Putty)</li>
 <li>Acceso de <strong>escritura y lectura</strong> al SFTP 10.105.109.28</li>
 <li>Acceso al HDM</li>
 </ul>
-<p>La configuración de toda la red ALU se baja diariamente en un archivo (Snapshot) que es el equivalente a un “Dump” desde el Netact y se sube al servidor SFTP. Este archivo se maneja con el WPS que es el SW de gestión de ALU (Equivalente al CM Editor del Netact). Toda la información de las distintas FEMTOs, así como los Profiles que son sets de parámetros que se agrupan dentro de una categoría:</p>
+ <style type="text/css">
+  table {
+     border:1px solid red;
+     }
+
+</style>
+
+<table border="1">
+
+<td>
+
+      Para no tener problemas con el SGD, ya que éste también utiliza Java se sugiere:
+
+<ul>
+
+      <li>Ejecutarlo a través del navegador WaterxFox (familia Mozilla, link descarga)</li>
+
+  <li>Tener instalada la versión de Java que se esté utilizando pero para 32 bits y para 64 bits, de ser posible la 1.6.</li>
+
+
+  <li>De fallar al momento de cargar alguna de las aplicaciones, intentar también desde el https://sgd03.oss.ar.telmex/sgd</li>
+
+
+  <li>Chequear dentro de la consola de Java (Panel de Control - > Java), en la pestaña Avanzado dentro de la opción Java Predeterminado para Navegadores debe estar tildada la opción Familia Mozilla.</li>
+
+</ul>
+</td>
+</table><br/><p>La configuración de toda la red ALU se baja diariamente en un archivo (Snapshot) que es el equivalente a un “Dump” desde el Netact y se sube al servidor SFTP. Este archivo se maneja con el WPS que es el SW de gestión de ALU (Equivalente al CM Editor del Netact). Toda la información de las distintas FEMTOs, así como los Profiles que son sets de parámetros que se agrupan dentro de una categoría:</p>
 <ul class="simple">
 <li>Hardware Profile: agrupa los parámetros de potencia (CPICH, max power limit, etc)</li>
 <li>Location Profile: agrupa parámetros de RF (UARFCN, frequency BAND, etc)</li>
@@ -198,21 +257,26 @@ Ver Link: <a class="reference external" href="../_static/images/das/Troubleshoot
 <p><strong>Al momento de revisar una FEMTO se debe tener el último Snapshot para tener la configuración actualizada.</strong></p>
 <p><span style="color: #ff0000;"><strong>REVISAR CONFIGURACION DE FEMTO</strong></span></p><ol class="arabic simple">
 <li>Conectarse al SFTP 10.105.109.28 a través de un gestor como <a class="reference external" href="../_static/images/FEMTO/FileZilla_setup.exe">FileZilla_setup</a>. El usuario y password se gestiona con Emiliano Flores o Tomás Ferreyra (es el mismo que se utiliza para WMS, primero se debe ingresar al WMS, en el primer ingreso pide cambiar la clave y una vez que este usuario este generado y ya se haya ingresado al WMS, se puede utilizar en el FTP)</li>
-<li>Ir al raíz e ingresar en la ruta /opt/nortel/data/cmXML/scheduledExport y buscar el último snapshot del día “UTRAN-SNAP20170116xxxxxx.xml” y guardarlo localmente</li>
+<li>Ir al raíz e ingresar en la ruta /opt/nortel/data/cmXML/scheduledExport y buscar el último snapshot del día “UTRAN-SNAP20170116xxxxxx.xml” y guardarlo en el disco compartido \corpsaba-usrshareEngineerCalidadBibliotecaIndoor y nuevas tecnologiasFEMTOSNAPSHOT_WO</li>
 </ol>
 <img alt="../_images/pag2.png" class="align-center" src="../_images/pag2.png" />
 <ol class="arabic simple" start="3">
+<li>Cambiar grafico</li>
+</ol>
+<img alt="../_images/pag9.png" class="align-center" src="../_images/pag9.png" />
+<ol class="arabic simple" start="4">
 <li>Ingresar al WPS desde el SGD4 <a class="reference external" href="https://sgd04.oss.ar.telmex/sgd">https://sgd04.oss.ar.telmex/sgd</a> con usuario y password de red.</li>
 <li>Abrir el snapshot File-&gt; Open-&gt;Snapshot</li>
 </ol>
 <img alt="../_images/pag2.2.png" class="align-center" src="../_images/pag2.2.png" />
-<ol class="arabic simple" start="5">
-<li>Dentro de <a class="reference external" href="mailto:FemtoCluster/390&#37;&#52;&#48;default">FemtoCluster/390<span>&#64;</span>default</a> se encuentran las Femtos de Argentina y se dividen en 2 grupos Femto/xx y FemtoGroup/xx, según sean Home Cell o Metro Cell. Si se conoce el Cell id se busca en Filter On por texto Femto/cellid o FemtoGroup/cellid:</li>
+<ol class="arabic simple" start="6">
+<li>Dentro de <a class="reference external" href="mailto:FemtoCluster/390&#37;&#52;&#48;default">FemtoCluster/390<span>&#64;</span>default</a> se encuentran las Femtos de Argentina y se dividen en 2 grupos Femto/xx y FemtoGroup/xx, según tengan uno o más sectores. Si se conoce el Cell id se busca en Filter On por texto Femto/cellid o FemtoGroup/cellid:</li>
 </ol>
 <img alt="../_images/pag3.png" class="align-center" src="../_images/pag3.png" />
-<p>Si no se conoce el Cell id y se tiene el cell name, seleccionamos todas las Femtos y los Femto Groups y vamos a la pestaña Tabular Editor y en la columna bSRName filtramos por el nombre de la FC.</p>
+<p>Si no se conoce el Cell id y se tiene el cell name, seleccionamos todas las Femtos y vamos a la pestaña Tabular Editor y en la columna bSRName filtramos por el nombre de la FC.</p>
 <img alt="../_images/pag3.2.png" class="align-center" src="../_images/pag3.2.png" />
-<ol class="arabic simple" start="6">
+<p>En caso de ser un Femto Group, seleccionamos y en Tabular Editor filtramos sobre el campo GroupName el nombre de la FC.</p>
+<ol class="arabic simple" start="7">
 <li>Para revisar los profiles asignados a cada FEMTO, nos posicionamos en la FC, en la pestaña Object Editor y hacemos click en la flecha del profile para ver los parámetros del mismo:</li>
 </ol>
 <img alt="../_images/pag3.3.png" class="align-center" src="../_images/pag3.3.png" />
@@ -224,7 +288,7 @@ Ver Link: <a class="reference external" href="../_static/images/das/Troubleshoot
 <p><strong><span style="color: #ff0000;">REALIZAR CAMBIOS EN FEMTO</span></strong></p><ol class="arabic simple">
 <li>Para realizar un cambio de parámetros, nos posicionamos en el valor del mismo, hacemos doble click y ponemos el nuevo valor.</li>
 <li>Para realizar un cambio de Profile, hacemos doble click y se habilita el listado de los distintos Profiles existentes (se deben revisar los parámetros que tiene cada uno de los Profiles de antemano para saber cuál es el nombre del que vamos a asignar)</li>
-<li>Luego se deben guardar los cambios en una Workorder. Para esto, una vez que realizamos los cambios vamos a la pestaña Workorder; hacemos click derecho sobre new workorder y seleccionamos la opción Save workorder On local file system.  (Se recomienda que el nombre del archivo tenga la acción que se llevará a cabo en esta WO y la celda en la que se realizará el cambio, por ej: ChangeLocationProfile_FBA509)</li>
+<li>Luego se deben guardar los cambios en una Workorder. Para esto, una vez que realizamos los cambios vamos a la pestaña Workorder; hacemos click derecho sobre new workorder y seleccionamos la opción Save workorder On local file system.  (Se recomienda que el nombre del archivo tenga la acción que se llevará a cabo en esta WO y la celda en la que se realizará el cambio, por ej: ChangeLocationProfile_FBA509) y lo guardamos en el disco compartido \corpsaba-usrshareEngineerCalidadBibliotecaIndoor y nuevas tecnologiasFEMTOSNAPSHOT_WO</li>
 </ol>
 <img alt="../_images/pag5.png" class="align-center" src="../_images/pag5.png" />
 <ol class="arabic simple" start="4">
@@ -238,8 +302,17 @@ IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en e
 <p><strong><span style="color: #ff0000;">DESCARGAR UN SNAPSHOT ACTUAL</span></strong></p><p>El Snapshot con la configuración de toda la red de ALU se puede descargar manualmente, para esto, en el WMS, vamos a Configuration -&gt; CM XML -&gt; Export Network. Seleccionamos UTRAN y tildamos la opción Compressed para que genere un .zip. En Directory dejamos la ruta que figura por defecto /cmXML/manualSnapshot; cargamos un nombre en File y luego click en Export now. El archivo .zip se guardará dentro del servidor de ALU por lo que hay que volver a conectarse por Filezilla al 10.105.109.28 Opt/Data/Nortel/CM XML/.</p>
 <p><strong><span style="color: #ff0000;">CONECTARSE A UNA FEMTO</span></strong></p><ol class="arabic simple">
 <li>A través de Putty conectarse al servidor 10.105.109.28 (SSH, puerto 22). El usuario y password para ingresar es el mismo que se utiliza para el WMS. Tipear <strong>bsrsorted</strong>  <strong>|grep FXXXX</strong>. Este comando nos mostrará las IP que tiene asignado para el túnel cada una de las FC. Copiar los últimos 2 octetos de la IP de la FC a la que nos vamos a conectar y tipear <strong>femto14 xxx.xxx</strong></li>
-<li>Una vez conectado a la FC, tipeamos <strong>console</strong> y luego <strong>menu</strong>. A continuación aparece un listado de comandos que se pueden consultar, ej.: 13) Macro Neighbour Menu y luego 1) Dislplay Internal Handover Statistics (BRRM), estos 2 comandos nos muestran las celdas macro que la FC está sniffeando con su HO attempts y HO successes</li>
 </ol>
+<img alt="../_images/pag10.png" class="align-center" src="../_images/pag10.png" />
+<ol class="arabic simple" start="2">
+<li>Una vez conectado a la FC, tipeamos console y luego menu. A continuación aparece un listado de comandos que se pueden consultar.</li>
+</ol>
+<p><strong>Ejemplo chequeo de adyacencias</strong></p>
+<p>Dentro de Menu, seleccionamos las opciones 13 (Macro Neighbour Menu ) y luego luego 1 (Dislplay Internal Handover Statistics (BRRM)), estos 2 comandos nos muestran las celdas macro que la FC está sniffeando con su HO attempts y HO successes.</p>
+<img alt="../_images/pag11.png" class="align-center" src="../_images/pag11.png" />
+<p><strong>Ejemplo chequeo CPICH</strong></p>
+<p>Dentro de Menu seleccionamos las opciones 10 (CELL Menu); 4 (Get Cell data BRRM) y luego la opción 1 (Get current Pilot Primary CPICH Power).</p>
+<img alt="../_images/pag12.png" class="align-center" src="../_images/pag12.png" />
 <p><strong><span style="color: #ff0000;">ENCENDER O APAGAR EL RADIO DE UNA FEMTO</span></strong></p><ol class="arabic simple">
 <li>A través del SGD ingresamos al HDM; <a class="reference external" href="https://sgd04.oss.ar.telmex/sgd">https://sgd04.oss.ar.telmex/sgd</a> con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU HDM Femto con el usuario de HDM. <strong>IMPORTANTE</strong>: si solicita actualizar la versión de Java presionar la opción “Mas tarde”. El usuario y pass para el HDM también debe solicitarse a Emiliano Flores o a Tomas Ferreyra.</li>
 </ol>
@@ -252,20 +325,179 @@ IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en e
 <li>Clickeamos el botón Manage y en Queued Functions seleccionamos la pestaña Queue Action, luego en Action se encuentra un listado de comandos como por ejemplo activar o desactivar el radio. Elegimos y clickeamos el botón Queue.</li>
 </ol>
 <img alt="../_images/pag8.png" class="align-center" src="../_images/pag8.png" />
+<div class="section" id="guia-para-aceptacion">
+<h3>2.1. Guia para Aceptacion<a class="headerlink" href="#guia-para-aceptacion" title="Permalink to this headline">¶</a></h3>
+<p><strong>DOCUMENTACIÓN A CONTROLAR</strong></p>
+<p>La siguiente documentación debe estar en Ledzite:</p>
+<ul class="simple">
+<li>XX_Diseño.ibw: contiene el archivo de diseño para abrir en IBwave.</li>
+<li>XX_TSS_PRE.pdf: contiene el relevamiento que realiza ALU con características del edificio y mediciones con Qualipoc para poder comenzar el diseño.</li>
+<li>XX_RF_Sheet.xlsx: contiene la parametrización con la que se diseña e implementa la solución (Profiles, PSC, Cellid, vecinas, etc).</li>
+<li>XX_Diseño.pdf: contiene la solución que se va a instalar, hojas de datos, predicciones de IBwave (RSCP, ECIO), etc.</li>
+<li>CAO_XX.pdf: este es el Conforme a Obra, tiene la descripción de lo que quedó instalado realmente y la conformidad del cliente.</li>
+<li>XX_TSS_POST. Pdf*: contiene el walktest  y los resultados de las pruebas que se realizan una vez concluida la instalación. Ésta sería la auditoría final una vez que finalizó la obra.</li>
+</ul>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Si es una HC, puede que no tenga medición posterior a la instalación. Esto deberá consultarse con el grupo Care Calidad.</p>
+<p>Esta documentación debe controlarse tal como se hace con la red Macro. Verificar que lo instalado coincida con lo diseñado; que de existir alguna modificación en la instalación física o en la parametrización, ésto quede aclarado en la documentación correspondiente. Dentro del documento POST hay un resumen de configuración que debe coincidir con la RF Sheet (de no ser así se debe verificar si contamos con la última versión de RF Sheet)</p>
+<p><strong>PARÁMETROS A CONTROLAR CON RF SHEET (CORE ALU VS CORE CLARO)</strong></p>
+<p>Se debe verificar que la parametrización de la FC sea según lo diseñado en la RF Sheet. Para esto es necesario contrastar los parámetros en el WPS en un snapshot actualizado (consultar la sección REVISAR CONFIGURACION DE FEMTO en la wiki de optimización) ya que los valores que figuran en el CME son solamente del elemento virtual y no los que realmente tiene configurado la FC:</p>
+<ul class="simple">
+<li>UARFCN</li>
+<li>Cellid</li>
+<li>Gateway/no Gateway</li>
+<li>PSC</li>
+<li>LAC/RAC</li>
+</ul>
+<p>Perfiles</p>
+<p>Se debe corroborar que la FC tenga asignado los perfiles de diseño (RF_Sheet):</p>
+<ul class="simple">
+<li>Hardware Profile: agrupa parámetros de potencia</li>
+<li>Location Profile: agrupa parámetros de RF</li>
+<li>Profile: agrupa parámetros de movilidad*</li>
+</ul>
+<p><a href="#id3"><span class="problematic" id="id4">*</span></a>Dentro de este Profile se especifica en el mismo campo si la FC es Gateway o no. Por convención, solo se aclara cuando no son GW, por ej <a class="reference external" href="mailto:Profile/4216_Metro_Indoor_F2FHO_no_GW&#37;&#52;&#48;default">Profile/4216_Metro_Indoor_F2FHO_no_GW<span>&#64;</span>default</a>.</p>
+<p>Algunos Profiles, tienen más de una carpeta BSRProfile; cada una de estas carpetas contiene agrupados los parámetros para distintas versiones de WPS. Al día de hoy debemos corroborar los parámetros dentro de la versión 14_02_00.</p>
+<p><strong>KPIS</strong></p>
+<p>Los kpis a controlar se deben consultar en IBWH para tener en cuenta los 5 días con más tráfico de la FC. Bajar el Excel desde SMART, ACCESO -&gt; FEMTOCELL -&gt; CELL -&gt; REPORTE AREA OPTIMIZACION</p>
+<ul class="simple">
+<li>Accesibilidad de Voz /Datos: debe superar el 90%</li>
+<li>Drop Voz /Datos: debe ser menor al 2%</li>
+<li>Disponibilidad: debe ser mayor al 95%</li>
+<li>Handover SR: debe ser mayor al 90%</li>
+<li>Interferencia en Uplink -65 dbm</li>
+</ul>
+<p>Se deben verificar también los eventos de Congestión de BH. Si el mismo es de Claro, se puede rechazar el sitio, de lo contrario se comentará esta situación en el TR.</p>
+<p><strong>INTEGRACIÓN DE FEMTO EN NETACT</strong></p>
+<ul class="simple">
+<li>Verificar que el elemento esté creado en Netact (con la nomenclatura nueva).</li>
+<li>Verificar que tenga cargadas las adyacencias que figuran en la RF Sheet</li>
+</ul>
+<p>Se debe hacer una nueva optimización de adyacencias, para esto se debe ingresar a la Femto por Putty (consultar la sección Conectarse a una FEMTO de la wiki de optimización, las opciones dentro de menú son 13 y 1) para ver si la FC está scaneando nuevas celdas macro. En caso de encontrar alguna nueva adyacencia que no esté creada se debe agregar en el CME. Para esto seleccionamos la FC y el sector de la macro y con botón derecho y seleccionar la opción Create Unidirectional Adjacency to Network. El HOPS/HOPI que se utiliza para las soluciones indoor es el 74 - FEMTO.</p>
+<p><strong>WALKTEST</strong></p>
+<p>Dentro del archivo XX_TSS_POST. Pdf, está la medición final con la FC ya instalada. Se debe verificar que se cumpla con los objetivos de diseño. Por ejemplo si en la ingeniería (archivo XX_TSS_PRE.pdf) se especifica que se va a dar cobertura al área de administración, verificar que los valores de RSCP e ECIO sean buenos sobre todo en dicha área.</p>
+<p>Dentro del archivo de Walktest están las pruebas de re selección y de HO, se deben revisar las mismas y corroborar que el cuadro que posee las pruebas de llamadas, HO y re selección este todo OK.</p>
+<p>En la comparación entre lo medido y lo diseñado (predicción IBwave), se tolerara un margen de desviación de hasta un 5%. Ej.: si tenemos en la predicción una zona en la que el RSCP esperado es de -100 dbm, los niveles medidos en esa zona en el WT no deberían ser inferiores a -105 dbm.</p>
+</div>
+</div>
+<div class="section" id="spidercloud">
+<h2>3. SPIDERCLOUD<a class="headerlink" href="#spidercloud" title="Permalink to this headline">¶</a></h2>
+<p><span style="color: #ff0000;"><strong>Introducción</strong></span></p><p>La solución de Small Cells SpiderCloud se puede diferenciar en dos partes, la parte de acceso RAN (E-RAN) y la parte de Core virtualizada (vHetNet). Si bien en la sección documentos hay información sobre vHetNet, la información en la Wiki está orientada a RAN.</p>
+<p><span style="color: #ff0000;"><strong>Arquitectura, Componentes y HW</strong></span></p><p>Los elementos principales que componen la E-RAN son los Radio Nodos (RN) y los Nodos de Servicio o Services Nodes (SN).</p>
+<p>El SN posee funciones similares a la de una RNC. Gestiona la movilidad y Soft HO entre RNs, interferencia y funcionalidades de SON. Provee el único punto de integración con el core mediante un túnel IPSec al Security Gateway (elemento de acceso al core).</p>
+<p>Los RN contienen</p>
+<img alt="../_images/image1.png" class="align-center" src="../_images/image1.png" />
+<p>En las celdas específicas de UMTS y LTE en una sola unidad física. Estos se conectan al SN mediante cable UTP y se alimentan por PoE. Poseen dos antenas internas o dos puertos para conectar antenas externas con una potencia máxima de salida total de 250 mW. Por lo que para funcionalidad MIMO la potencia se reduce a la mitad.</p>
+<p>A continuación se listan algunas capacidades relacionadas con los componentes del sistema.</p>
+<img alt="../_images/image2.png" class="align-center" src="../_images/image2.png" />
+<img alt="../_images/image3.png" class="align-center" src="../_images/image3.png" />
+<img alt="../_images/image4.png" class="align-center" src="../_images/image4.png" />
+<img alt="../_images/image5.png" class="align-center" src="../_images/image5.png" />
+<p><span style="color: #ff0000;"><strong>Documentacion</strong></span></p><ul class="simple">
+<li><strong>Introducción SpiderCloud</strong>: Entrenamiento básico: arquitectura, HW y funcionamiento, especificaciones técnicas, SON, seguridad, gestión, alarmas, KPIs, etc. Ver Link : <a class="reference external" href="../_static/images/spidercloud/SCT_120_ClaroAR.pdf">SCT_120_ClaroAR</a></li>
+<li><strong>SpiderCloud Deployment</strong>: Descripción del proceso de deployment, relevamiento, diseño, planning, procedimiento de instalación y troubleshooting. Ver Link: <a class="reference external" href="../_static/images/spidercloud/SCT_220_ClaroAR.pdf">SCT_220_ClaroAR</a></li>
+<li><strong>Guia de Parametros</strong>: Contiene descripción de cada parámetro, tipo de parámetro, si es o no configurable, valor por default. Ver Link: <a class="reference external" href="../_static/images/spidercloud/SCOS_Data_Model-Reference_R5.1.pdf">SCOS_Data_Model-Reference_R5.1</a></li>
+<li><strong>Manual de Comandos</strong>: Guía de usuario para el uso de comandos (CLI) en el Services Node. Estructura, sintaxis, comandos para modo “configuration” y “Operational mode”. Ver Link : <a class="reference external" href="../_static/images/spidercloud/SCOS_CLI_Guide_R5.1.pdf">SCOS_CLI_Guide_R5.1</a></li>
+<li><strong>KPIs</strong>: Indicadores de Red, fórmulas y contadores para la evaluación de Performance. Ver Link: KPI&#8217;<a href="#id5"><span class="problematic" id="id6">SSPIDERCLOUDCiscoSerie8000_</span></a></li>
+<li><strong>Guia de Administrador</strong>: Manual para administrar el SN (por CLI) en donde se indican procedimientos para cambios de parámetros y configuraciones con ejemplos. Ver Link: <a class="reference external" href="../_static/images/spidercloud/CiscoUSC8000OSAdminGuideRelease4.1.pdf">CiscoUSC8000OSAdminGuideRelease4.1</a></li>
+<li><strong>TOP Alarm en Spidernet</strong>: Descripción de Alarmas principales y como proceder en cada caso. Ver Link: <a class="reference external" href="../_static/images/spidercloud/Cisco_USC_8K_Top_Alarms_V2.ppt">Cisco_USC_8K_Top_Alarms_V2</a></li>
+<li><strong>Modo Centralizado</strong>: Descripción del modo centralizado, requisitos, provisionamiento, diagrama de conexión. Ver Link : <a class="reference external" href="../_static/images/spidercloud/CentralizedServicesNode2017Argentina.pptx">CentralizedServicesNode2017Argentina</a></li>
+<li><strong>Core vHetNet</strong>: Arquitectura, descripción y funcionamiento de componentes e interfaces, integración en claro, troubleshooting. Ver Link : <a class="reference external" href="../_static/images/spidercloud/Claro-AR_SCS4.1_vHetNet_Training.pdf">Claro-AR_SCS4.1_vHetNet_Training</a></li>
+</ul>
+<p><span style="text-decoration: underline;"><strong><span style="color: #ff0000; text-decoration: underline;">Verificaciones para Truobleshooting y cambios de configuración</span></strong></span></p>
+
+<p><span style="color: #ff0000;"><strong>Conectarse por SSH a un SN desde Spidernet</strong></span></p><p>Al hacer click derecho sobre el SN del sitio podemos usar la opción Open SSH para conectarnos al SN por CLI. Usuario y password: admin</p>
+<img alt="../_images/image6.png" class="align-center" src="../_images/image6.png" />
+<img alt="../_images/image7.png" class="align-center" src="../_images/image7.png" />
+<p><span style="color: #ff0000;"><strong>Comprobar conectividad con el SN desde Spidernet</strong></span></p><p>Al hacer click derecho sobre el SN del sitio podemos usar la primera opción del menú desplegable (ICMP Ping)) para verificar la conectividad con el SN.</p>
+<img alt="../_images/image8.png" class="align-center" src="../_images/image8.png" />
+<p><span style="color: #ff0000;"><strong>Ver alarmas en el SN (CLI)</strong></span></p><p>“Show system alarm” (para alarmas activas).</p>
+<p>“Show system alarm history” (para alarmas históricas).</p>
+<img alt="../_images/image9.png" class="align-center" src="../_images/image9.png" />
+<p><span style="color: #ff0000;"><strong>Conectividad con el Core</strong></span></p><p>Con el comando “Show core” podemos verificar si el túnel IPsec con en SecGW está arriba (established).</p>
+<p>También se puede ver el estado de las conexiones 3G con el Iuh GW y la 4G contra el S1 Gateway (ambas deben estar connected).</p>
+<img alt="../_images/image10.png" class="align-center" src="../_images/image10.png" />
+<p><span style="color: #ff0000;"><strong>Status de ServicesNode</strong></span></p><p>“Show ServicesNode”</p>
+<p>El estado operativo debe ser IS-NORMAL “In Service - normal”</p>
+<img alt="../_images/image11.png" class="align-center" src="../_images/image11.png" />
+<p><span style="color: #ff0000;"><strong>Status de los Radionodos</strong></span></p><p>“Show Radionode”</p>
+<p>El estado operativo debe ser IS-NORMAL “In Service - Normal”</p>
+<img alt="../_images/image12.png" class="align-center" src="../_images/image12.png" />
+<p><span style="color: #ff0000;"><strong>Verificar sesiones activas</strong></span></p><p>Se pueden verificar sesiones activas por Tecnología, listando IMSI, estado RRC, Celda asociada, tipo y causa de sesión, etc.</p>
+<p>Se utilizan los comandos “Show sesión UMTS” o bien “Show session LTE”</p>
+<img alt="../_images/image13.png" class="align-center" src="../_images/image13.png" />
+<p><span style="color: #ff0000;"><strong>Reiniciar  Services Node</strong></span></p><p>Utilizar el comando “request system reboot node”</p>
+<p><span style="color: #ff0000;"><strong>Reiniciar Radio Nodo</strong></span></p><p>“request system reboot node X” en donde X es el número de radionodo.</p>
+<p><span style="color: #ff0000;"><strong>Adyacencias Existentes</strong></span></p><p>“show RFMgmt UMTS NeighborCells”</p>
+<img alt="../_images/image14.png" class="align-center" src="../_images/image14.png" />
+<p><span style="color: #ff0000;"><strong>Adyacencias Detectadas</strong></span></p><p>Comando para ver las celdas detectadas en por los RN en un REM Scan.</p>
+<p>“Show rfmgt UMTS detectedcells”</p>
+<img alt="../_images/image15.png" class="align-center" src="../_images/image15.png" />
+<p><span style="color: #ff0000;"><strong>Crear Adyacencias</strong></span></p><p><strong>Primero Paso</strong>: Para crear la adyacencia tiene que estar definida en el objeto “FAPService 1 CellConfig UMTS RAN FDDFAP NeighborList” con los atributos correspondientes como los que se muestran en el siguiente ejemplo:</p>
+<p>Entrar en modo configuración con el comando “configure”</p>
+<img alt="../_images/image16.png" class="align-center" src="../_images/image16.png" />
+<p>“set FAPService 1 CellConfig UMTS RAN FDDFAP NeighborList IntraFreqCell 3107 Enable true PCPICHScramblingCode 52 CID 3107 RNCID 360 LAC 11142 RAC 41 URA 1 PLMNID 722310 MustInclude true”</p>
+<img alt="../_images/image17.png" class="align-center" src="../_images/image17.png" />
+<p>Escribir los cambios con “Commit”</p>
+<img alt="../_images/image18.png" class="align-center" src="../_images/image18.png" />
+<p><strong>Segundo paso</strong>:</p>
+<p>Verificar si fue creado correctamente en la Neighborlist</p>
+<p>“show FAPService 1 CellConfig UMTS RAN FDDFAP NeighborList”</p>
+<img alt="../_images/image19.png" class="align-center" src="../_images/image19.png" />
+<p><strong>Tercer paso</strong>:</p>
+<p>Una vez creado entonces asignarlo al Radio Nodo correspondiente con el siguiente comando</p>
+<p>“set Cell &lt;CellNumber&gt; CellConfig UMTS RAN FDDFAP NeighborList InterFreqCell &lt;CellNumber&gt;
+InclusionMode MustInclude”</p>
+<p>“Commit” para impactar el cambio</p>
+<p>Ejemplo:</p>
+<p>set Cell 1 CellConfig UMTS RAN FDDFAP NeighborList InterFreqCell 3107 InclusionMode MustInclude</p>
+<img alt="../_images/image20.png" class="align-center" src="../_images/image20.png" />
+<p>“commit” para impactar el cambio</p>
+<p><strong>Cuarto Paso</strong>: Verificar con el siguiente comando</p>
+<p>show Cell 1 CellConfig UMTS RAN FDDFAP NeighborList</p>
+<img alt="../_images/image21.png" class="align-center" src="../_images/image21.png" />
+<p>Una vez creada y asignada a la celda salir de modo Configure con el comando
+“exit”</p>
+<p>Correr el siguiente comado para combinar la lista final de vecinas (las detectadas anteriormente en REM Scan más las que acabamos de crear manualmente)</p>
+<p>“request umts self-config neighborlist-create”</p>
+<p>Luego para ver el listado final</p>
+<p>“show RFMgmt UMTS NeighborCells”</p>
+<img alt="../_images/image22.png" class="align-center" src="../_images/image22.png" />
+<p>Para más información de cómo gestionar adyacencias consultar la guía de administrador en la sección de Documentos.</p>
+<p><span style="color: #ff0000;"><strong>Status de los Radionodos</strong></span></p><p><strong>Cambio de Potencia en RadioNodo</strong></p>
+<p>Cabe aclarar que la potencia del canal piloto es fija, con un valor del 5% de la potencia máxima configurada y la misma puede ir desde -5 a 24 dBm. (MaxFAPTxPower = 240 equivale a 24dBm)</p>
+<p>“Configure” para accede a modo configuración</p>
+<p>“set FAPService 1 CellConfig UMTS RAN FDDFAP RF MaxFAPTxPower -50..240”</p>
+<p>“Commit” para grabar los cambios</p>
+<img alt="../_images/image23.png" class="align-center" src="../_images/image23.png" />
+<p><span style="color: #ff0000;"><strong>Cambios de Parametrización en un Services Node</strong></span></p><p>Para hacer cualquier cambio de parámetro, primero hay que identificar sobre que elemento queremos hacer el cambio y en que objeto se encuentra el mismo a nivel Services Node, esto último lo podemos hacer buscando en el documento SCOS_Data_Model-Reference_R5.1, o bien ayudándonos con las opciones que se muestran por línea de comandos al usar la barra espaciadora.
+Lo mayoría de los cambios se realizan en modo configuración y es necesario hacer “commit” luego de ejecutar el comando para hacer el cambio.</p>
+<p>Ejemplo de cambio de RNC ID:</p>
+<p>Identificamos el objeto en donde se encuentra el parámetro buscando en el archivo SCOS_Data_Model-Reference_R5.1</p>
+<img alt="../_images/image24.png" class="align-center" src="../_images/image24.png" />
+<img alt="../_images/image25.png" class="align-center" src="../_images/image25.png" />
+<p>Despues desde CLI</p>
+<img alt="../_images/image26.png" class="align-center" src="../_images/image26.png" />
+<p>El mismo cambio también puede hacerse desde El gestor SpiderNet
+Click derecho sobre el SN y Show Configuration</p>
+<img alt="../_images/image27.png" class="align-center" src="../_images/image27.png" />
+<p>Identificar el parámetro a cambiar buscándolo en las solapas según tecnología y nivel de objeto, modificarlo y guardarlo.</p>
 </div>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tecnologia2g-opt.html" class="btn btn-neutral float-right" title="TECNOLOGíA 2G" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tecnologia2g-opt.html" class="btn btn-neutral float-right" title="TECNOLOGíA 2G" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../optimizacion.html" class="btn btn-neutral" title="OPTIMIZACIÓN" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../optimizacion.html" class="btn btn-neutral" title="OPTIMIZACIÓN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -299,7 +531,8 @@ IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en e
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
