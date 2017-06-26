@@ -230,13 +230,14 @@ Ver Link: <a class="reference external" href="../_static/images/das/Troubleshoot
 
 <table border="1">
 
+
 <td>
 
       Para no tener problemas con el SGD, ya que éste también utiliza Java se sugiere:
 
 <ul>
 
-      <li>Ejecutarlo a través del navegador WaterxFox (familia Mozilla, link descarga)</li>
+      <li>Ejecutarlo a través del navegador WaterxFox (familia Mozilla, link <a href="../_static/images/FEMTO/WaterfoxPortable_52.0.1_English.paf.exe">descarga</a>)</li>
 
   <li>Tener instalada la versión de Java que se esté utilizando pero para 32 bits y para 64 bits, de ser posible la 1.6.</li>
 
@@ -328,7 +329,8 @@ IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en e
 <div class="section" id="guia-para-aceptacion">
 <h3>2.1. Guia para Aceptacion<a class="headerlink" href="#guia-para-aceptacion" title="Permalink to this headline">¶</a></h3>
 <p><strong>DOCUMENTACIÓN A CONTROLAR</strong></p>
-<p>La siguiente documentación debe estar en Ledzite:</p>
+<p>La documentación de aceptación está almacenada en Ledzite y en el Sharepoint de Calidad <a class="reference external" href="http://colaboracion.claro.amx/sites/gciacalidadred/relevamientoymedicionesbda/_layouts/15/start.aspx#/Lists/Smallcell/AllItems.aspx">http://colaboracion.claro.amx/sites/gciacalidadred/relevamientoymedicionesbda/_layouts/15/start.aspx#/Lists/Smallcell/AllItems.aspx</a> (de no contar con este acceso se debe solicitar al grupo Care Calidad).
+Al recibir la aceptación se debe buscar tanto en Ledzite como en el sharepoint, y bajar la última versión de los siguientes documentos:</p>
 <ul class="simple">
 <li>XX_Diseño.ibw: contiene el archivo de diseño para abrir en IBwave.</li>
 <li>XX_TSS_PRE.pdf: contiene el relevamiento que realiza ALU con características del edificio y mediciones con Qualipoc para poder comenzar el diseño.</li>
@@ -384,9 +386,8 @@ IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en e
 <p><span style="color: #ff0000;"><strong>Introducción</strong></span></p><p>La solución de Small Cells SpiderCloud se puede diferenciar en dos partes, la parte de acceso RAN (E-RAN) y la parte de Core virtualizada (vHetNet). Si bien en la sección documentos hay información sobre vHetNet, la información en la Wiki está orientada a RAN.</p>
 <p><span style="color: #ff0000;"><strong>Arquitectura, Componentes y HW</strong></span></p><p>Los elementos principales que componen la E-RAN son los Radio Nodos (RN) y los Nodos de Servicio o Services Nodes (SN).</p>
 <p>El SN posee funciones similares a la de una RNC. Gestiona la movilidad y Soft HO entre RNs, interferencia y funcionalidades de SON. Provee el único punto de integración con el core mediante un túnel IPSec al Security Gateway (elemento de acceso al core).</p>
-<p>Los RN contienen</p>
 <img alt="../_images/image1.png" class="align-center" src="../_images/image1.png" />
-<p>En las celdas específicas de UMTS y LTE en una sola unidad física. Estos se conectan al SN mediante cable UTP y se alimentan por PoE. Poseen dos antenas internas o dos puertos para conectar antenas externas con una potencia máxima de salida total de 250 mW. Por lo que para funcionalidad MIMO la potencia se reduce a la mitad.</p>
+<p>Los RN contienen las celdas específicas de UMTS y LTE en una sola unidad física. Estos se conectan al SN mediante cable UTP y se alimentan por PoE. Poseen dos antenas internas o dos puertos para conectar antenas externas con una potencia máxima de salida total de 250 mW. Por lo que para funcionalidad MIMO la potencia se reduce a la mitad.</p>
 <p>A continuación se listan algunas capacidades relacionadas con los componentes del sistema.</p>
 <img alt="../_images/image2.png" class="align-center" src="../_images/image2.png" />
 <img alt="../_images/image3.png" class="align-center" src="../_images/image3.png" />
@@ -465,7 +466,8 @@ InclusionMode MustInclude”</p>
 <p>Para más información de cómo gestionar adyacencias consultar la guía de administrador en la sección de Documentos.</p>
 <p><span style="color: #ff0000;"><strong>Status de los Radionodos</strong></span></p><p><strong>Cambio de Potencia en RadioNodo</strong></p>
 <p>Cabe aclarar que la potencia del canal piloto es fija, con un valor del 5% de la potencia máxima configurada y la misma puede ir desde -5 a 24 dBm. (MaxFAPTxPower = 240 equivale a 24dBm)</p>
-<p>“Configure” para accede a modo configuración</p>
+<p>“Configure” para acceder a modo configuración</p>
+<img alt="../_images/image29.png" class="align-center" src="../_images/image29.png" />
 <p>“set FAPService 1 CellConfig UMTS RAN FDDFAP RF MaxFAPTxPower -50..240”</p>
 <p>“Commit” para grabar los cambios</p>
 <img alt="../_images/image23.png" class="align-center" src="../_images/image23.png" />

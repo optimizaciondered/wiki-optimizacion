@@ -51,6 +51,8 @@ Optimizar las soluciones Indoor y nuevas tecnologías de red de acceso, analizan
 2. FEMTO CELL
 -------------
 
+.. _descarga: ../_static/images/FEMTO/waterfox.exe
+
 .. raw:: html 
 
 	<p><span style="color: #ff0000;"><strong>CONSIDERACIONES GENERALES</strong></span></p>
@@ -62,6 +64,7 @@ Debido a que las herramientas necesarias para la gestión de FEMTO son varias y 
 •	Acceso de **escritura y lectura** al SFTP 10.105.109.28
 •	Acceso al HDM 
 
+
 .. raw:: html 
 
    <style type="text/css">
@@ -69,17 +72,18 @@ Debido a que las herramientas necesarias para la gestión de FEMTO son varias y 
        border:1px solid red;
        }
 
-  </style>
+  </style>  
 
   <table border="1">
   
+
   <td>
 
   	Para no tener problemas con el SGD, ya que éste también utiliza Java se sugiere:
 
   <ul>
 
-  	<li>Ejecutarlo a través del navegador WaterxFox (familia Mozilla, link descarga)</li>
+  	<li>Ejecutarlo a través del navegador WaterxFox (familia Mozilla, link <a href="../_static/images/FEMTO/WaterfoxPortable_52.0.1_English.paf.exe">descarga</a>)</li>
 
     <li>Tener instalada la versión de Java que se esté utilizando pero para 32 bits y para 64 bits, de ser posible la 1.6.</li>
 
@@ -240,7 +244,8 @@ Dentro de Menu seleccionamos las opciones 10 (CELL Menu); 4 (Get Cell data BRRM)
 
 **DOCUMENTACIÓN A CONTROLAR**
 
-La siguiente documentación debe estar en Ledzite:
+La documentación de aceptación está almacenada en Ledzite y en el Sharepoint de Calidad http://colaboracion.claro.amx/sites/gciacalidadred/relevamientoymedicionesbda/_layouts/15/start.aspx#/Lists/Smallcell/AllItems.aspx (de no contar con este acceso se debe solicitar al grupo Care Calidad).
+Al recibir la aceptación se debe buscar tanto en Ledzite como en el sharepoint, y bajar la última versión de los siguientes documentos:
 
 -	XX_Diseño.ibw: contiene el archivo de diseño para abrir en IBwave.
 -	XX_TSS_PRE.pdf: contiene el relevamiento que realiza ALU con características del edificio y mediciones con Qualipoc para poder comenzar el diseño.
@@ -323,12 +328,11 @@ Los elementos principales que componen la E-RAN son los Radio Nodos (RN) y los N
 
 El SN posee funciones similares a la de una RNC. Gestiona la movilidad y Soft HO entre RNs, interferencia y funcionalidades de SON. Provee el único punto de integración con el core mediante un túnel IPSec al Security Gateway (elemento de acceso al core). 
 
-Los RN contienen
 
 .. image:: ../_static/images/spidercloud/image1.png
   :align: center
 
-En las celdas específicas de UMTS y LTE en una sola unidad física. Estos se conectan al SN mediante cable UTP y se alimentan por PoE. Poseen dos antenas internas o dos puertos para conectar antenas externas con una potencia máxima de salida total de 250 mW. Por lo que para funcionalidad MIMO la potencia se reduce a la mitad.
+Los RN contienen las celdas específicas de UMTS y LTE en una sola unidad física. Estos se conectan al SN mediante cable UTP y se alimentan por PoE. Poseen dos antenas internas o dos puertos para conectar antenas externas con una potencia máxima de salida total de 250 mW. Por lo que para funcionalidad MIMO la potencia se reduce a la mitad.
 
 A continuación se listan algunas capacidades relacionadas con los componentes del sistema.
 
@@ -575,7 +579,10 @@ Para más información de cómo gestionar adyacencias consultar la guía de admi
 
 Cabe aclarar que la potencia del canal piloto es fija, con un valor del 5% de la potencia máxima configurada y la misma puede ir desde -5 a 24 dBm. (MaxFAPTxPower = 240 equivale a 24dBm)
 
-“Configure” para accede a modo configuración
+“Configure” para acceder a modo configuración
+
+.. image:: ../_static/images/spidercloud/image29.png
+  :align: center
 
 “set FAPService 1 CellConfig UMTS RAN FDDFAP RF MaxFAPTxPower -50..240” 
 
