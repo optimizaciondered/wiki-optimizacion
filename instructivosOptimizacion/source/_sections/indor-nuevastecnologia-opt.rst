@@ -60,19 +60,18 @@ Optimizar las soluciones Indoor y nuevas tecnologías de red de acceso, analizan
 Debido a que las herramientas necesarias para la gestión de FEMTO son varias y requieren distintas versiones de JAVA (que muchas veces no son compatibles con el resto de las herramientas que utilizamos), se instalaron todas en el Servidor SGD3. Por esto antes de comenzar con la gestión de las FC, se deben solicitar los accesos correspondientes:
 
 •	SGD3 (user y pass de red pero debe tener permisos)
-•	Acceso al WMS*
+•	Acceso al WMS [1]_
 •	Acceso de **escritura y lectura** al SFTP 10.105.109.28
 •	Acceso al HDM 
 •	Acceso al NPO de Femto Cell
 
-*: este mismo usuario se utilizará para ingresar al Putty y al servidor (10.105.109.28),en donde se almacenan los Snapshots. 
+.. [1] : este mismo usuario se utilizará para ingresar al Putty y al servidor (10.105.109.28),en donde se almacenan los Snapshots. 
 
-Para SGD se debe solicitar el acceso a través de TR en la ruta:
+	Para SGD se debe solicitar el acceso a través de TR en la ruta:
 
-OPERACIONES --> CTROL.GESTION.ADMIN --> SOPORTE APLICACIONES --> USUARIO DCN
+	OPERACIONES --> CTROL.GESTION.ADMIN --> SOPORTE APLICACIONES --> USUARIO DCN
 
-Para el resto de las herramientas de ALU se debe solicitar vía mail a Damian Pizzini/ Ricardo Bandini.
-
+	Para el resto de las herramientas de ALU se debe solicitar vía mail a Damian Pizzini/ Ricardo Bandini.
 
 .. raw:: html 
 
@@ -94,10 +93,10 @@ Para el resto de las herramientas de ALU se debe solicitar vía mail a Damian Pi
 
   	<li>Ejecutarlo a través del navegador WaterxFox (familia Mozilla, link <a href="../_static/images/FEMTO/WaterfoxPortable_52.0.1_English.paf.exe">descarga</a>)</li>
 
-    <li>Se recomiendan los java 8 y 6 para el correcto funcionamiento. Se deben tener instaladas las versiones para 32 y para 64 bits (para descargar http://storage01.oss.ar.telmex/java/ ). Para esto verificar que exista la carpeta Java dentro de C:\Archivos de programa y C:\Archivo de programa (x86).</li>
+    <li>Se recomiendan los java 8 y 6 para el correcto funcionamiento. Se deben tener instaladas las versiones para 32 y para 64 bits (para descargar link <a href="http://storage01.oss.ar.telmex/java/">http://storage01.oss.ar.telmex/java/</a>) ). Para esto verificar que exista la carpeta Java dentro de C:\Archivos de programa y C:\Archivo de programa (x86).</li>
 
 
-    <li>De fallar al momento de cargar alguna de las aplicaciones, intentar también desde el https://sgd04.oss.ar.telmex/sgd</li>
+    <li>De fallar al momento de cargar alguna de las aplicaciones, intentar también desde el  link <a href="https://sgd04.oss.ar.telmex/sgd">https://sgd04.oss.ar.telmex/sgd</a>)</li>
 
 
     <li>Chequear dentro de la consola de Java (Panel de Control - > Java), en la pestaña Avanzado dentro de la opción Java Predeterminado para Navegadores debe estar tildada la opción Familia Mozilla.</li>
