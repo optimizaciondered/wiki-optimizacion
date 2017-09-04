@@ -214,13 +214,18 @@ Ver Link: <a class="reference external" href="../_static/images/das/Troubleshoot
 </div>
 <div class="section" id="femto-cell">
 <h2>2. FEMTO CELL<a class="headerlink" href="#femto-cell" title="Permalink to this headline">¶</a></h2>
-<p><span style="color: #ff0000;"><strong>CONSIDERACIONES GENERALES</strong></span></p><p>Debido a que las herramientas necesarias para la gestión de FEMTO son varias y requieren distintas versiones de JAVA (que muchas veces no son compatibles con el resto de las herramientas que utilizamos), se instalaron todas en el Servidor SGD4. Por esto antes de comenzar con la gestión de las FC, se deben solicitar los accesos correspondientes. Estos usuarios se solicitan vía Mail a Emiliano Flores / Tomas Ferreyra:</p>
+<p><span style="color: #ff0000;"><strong>CONSIDERACIONES GENERALES</strong></span></p><p>Debido a que las herramientas necesarias para la gestión de FEMTO son varias y requieren distintas versiones de JAVA (que muchas veces no son compatibles con el resto de las herramientas que utilizamos), se instalaron todas en el Servidor SGD3. Por esto antes de comenzar con la gestión de las FC, se deben solicitar los accesos correspondientes:</p>
 <ul class="simple">
-<li>SGD4 (user y pass de red pero debe tener permisos)</li>
-<li>Acceso al WMS (este mismo se utilizará para ingresar al Putty)</li>
+<li>SGD3 (user y pass de red pero debe tener permisos)</li>
+<li>Acceso al WMS*</li>
 <li>Acceso de <strong>escritura y lectura</strong> al SFTP 10.105.109.28</li>
 <li>Acceso al HDM</li>
+<li>Acceso al NPO de Femto Cell</li>
 </ul>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>: este mismo usuario se utilizará para ingresar al Putty y al servidor (10.105.109.28),en donde se almacenan los Snapshots.</p>
+<p>Para SGD se debe solicitar el acceso a través de TR en la ruta:</p>
+<p>OPERACIONES &#8211;&gt; CTROL.GESTION.ADMIN &#8211;&gt; SOPORTE APLICACIONES &#8211;&gt; USUARIO DCN</p>
+<p>Para el resto de las herramientas de ALU se debe solicitar vía mail a Damian Pizzini/ Ricardo Bandini.</p>
  <style type="text/css">
   table {
      border:1px solid red;
@@ -239,17 +244,19 @@ Ver Link: <a class="reference external" href="../_static/images/das/Troubleshoot
 
       <li>Ejecutarlo a través del navegador WaterxFox (familia Mozilla, link <a href="../_static/images/FEMTO/WaterfoxPortable_52.0.1_English.paf.exe">descarga</a>)</li>
 
-  <li>Tener instalada la versión de Java que se esté utilizando pero para 32 bits y para 64 bits, de ser posible la 1.6.</li>
+  <li>Se recomiendan los java 8 y 6 para el correcto funcionamiento. Se deben tener instaladas las versiones para 32 y para 64 bits (para descargar http://storage01.oss.ar.telmex/java/ ). Para esto verificar que exista la carpeta Java dentro de C:\Archivos de programa y C:\Archivo de programa (x86).</li>
 
 
-  <li>De fallar al momento de cargar alguna de las aplicaciones, intentar también desde el https://sgd03.oss.ar.telmex/sgd</li>
+  <li>De fallar al momento de cargar alguna de las aplicaciones, intentar también desde el https://sgd04.oss.ar.telmex/sgd</li>
 
 
   <li>Chequear dentro de la consola de Java (Panel de Control - > Java), en la pestaña Avanzado dentro de la opción Java Predeterminado para Navegadores debe estar tildada la opción Familia Mozilla.</li>
 
+  <li>Se debe agregar el link de SGD al listado de excepciones de sitios de Java (Panel de Control -> Java -> Seguridad -> Editar lista de sitios</li>
+
 </ul>
 </td>
-</table><br/><p>La configuración de toda la red ALU se baja diariamente en un archivo (Snapshot) que es el equivalente a un “Dump” desde el Netact y se sube al servidor SFTP. Este archivo se maneja con el WPS que es el SW de gestión de ALU (Equivalente al CM Editor del Netact). Toda la información de las distintas FEMTOs, así como los Profiles que son sets de parámetros que se agrupan dentro de una categoría:</p>
+</table><br/><p>La configuración de toda la red ALU se baja diariamente en un archivo (Snapshot) que es el equivalente a un “Dump” desde el Netact y se sube al servidor SFTP. Este archivo se maneja con el WPS que es el SW de gestión de ALU (Equivalente al CM Editor del Netact). Esta herramienta sirve para revisar la parametrización de las distintas FEMTOs, como por ejemplo los Profiles que son sets de parámetros que se agrupan dentro de una categoría:</p>
 <ul class="simple">
 <li>Hardware Profile: agrupa los parámetros de potencia (CPICH, max power limit, etc)</li>
 <li>Location Profile: agrupa parámetros de RF (UARFCN, frequency BAND, etc)</li>
@@ -257,27 +264,23 @@ Ver Link: <a class="reference external" href="../_static/images/das/Troubleshoot
 </ul>
 <p><strong>Al momento de revisar una FEMTO se debe tener el último Snapshot para tener la configuración actualizada.</strong></p>
 <p><span style="color: #ff0000;"><strong>REVISAR CONFIGURACION DE FEMTO</strong></span></p><ol class="arabic simple">
-<li>Conectarse al SFTP 10.105.109.28 a través de un gestor como <a class="reference external" href="../_static/images/FEMTO/FileZilla_setup.exe">FileZilla_setup</a>. El usuario y password se gestiona con Emiliano Flores o Tomás Ferreyra (es el mismo que se utiliza para WMS, primero se debe ingresar al WMS, en el primer ingreso pide cambiar la clave y una vez que este usuario este generado y ya se haya ingresado al WMS, se puede utilizar en el FTP)</li>
-<li>Ir al raíz e ingresar en la ruta /opt/nortel/data/cmXML/scheduledExport y buscar el último snapshot del día “UTRAN-SNAP20170116xxxxxx.xml” y guardarlo en el disco compartido \corpsaba-usrshareEngineerCalidadBibliotecaIndoor y nuevas tecnologiasFEMTOSNAPSHOT_WO</li>
+<li>Para poder conectarse al SFTP 10.105.109.28 se debe utilizar un gestor como Filezilla. El usuario y password se gestiona con Damian Pizzini/ Ricardo Bandini (ES EL MISMO QUE SE UTILIZA PARA WMS, PRIMERO SE DEBE INGRESAR AL WMS, EN EL PRIMER INGRESO PIDE CAMBIAR LA CLAVE Y UNA VEZ QUE ESTE USUARIO ESTE GENERADO Y YA SE HAYA INGRESADO AL WMS, SE PUEDE UTILIZAR EN EL FTP)</li>
+<li>Ingresar en la ruta /opt/nortel/data/cmXML/scheduledExport y buscar el último snapshot del día “UTRAN-SNAP20170116xxxxxx.xml” y guardarlo en el disco compartido \corpsaba-usrshareEngineerCalidadBibliotecaIndoor y nuevas tecnologiasFEMTOSNAPSHOT_WO</li>
 </ol>
 <img alt="../_images/pag2.png" class="align-center" src="../_images/pag2.png" />
 <ol class="arabic simple" start="3">
-<li>Cambiar grafico</li>
-</ol>
-<img alt="../_images/pag9.png" class="align-center" src="../_images/pag9.png" />
-<ol class="arabic simple" start="4">
-<li>Ingresar al WPS desde el SGD4 <a class="reference external" href="https://sgd04.oss.ar.telmex/sgd">https://sgd04.oss.ar.telmex/sgd</a> con usuario y password de red.</li>
-<li>Abrir el snapshot File-&gt; Open-&gt;Snapshot</li>
+<li>Ingresar al ALU WPS Femto 4.1.14.2 desde el SGD3 <a class="reference external" href="https://sgd03.oss.ar.telmex/sgd">https://sgd03.oss.ar.telmex/sgd</a> con usuario y password de red.</li>
+<li>Abrir el snapshot File-&gt; Open-&gt;Snapshot.</li>
 </ol>
 <img alt="../_images/pag2.2.png" class="align-center" src="../_images/pag2.2.png" />
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="5">
 <li>Dentro de <a class="reference external" href="mailto:FemtoCluster/390&#37;&#52;&#48;default">FemtoCluster/390<span>&#64;</span>default</a> se encuentran las Femtos de Argentina y se dividen en 2 grupos Femto/xx y FemtoGroup/xx, según tengan uno o más sectores. Si se conoce el Cell id se busca en Filter On por texto Femto/cellid o FemtoGroup/cellid:</li>
 </ol>
 <img alt="../_images/pag3.png" class="align-center" src="../_images/pag3.png" />
 <p>Si no se conoce el Cell id y se tiene el cell name, seleccionamos todas las Femtos y vamos a la pestaña Tabular Editor y en la columna bSRName filtramos por el nombre de la FC.</p>
 <img alt="../_images/pag3.2.png" class="align-center" src="../_images/pag3.2.png" />
 <p>En caso de ser un Femto Group, seleccionamos y en Tabular Editor filtramos sobre el campo GroupName el nombre de la FC.</p>
-<ol class="arabic simple" start="7">
+<ol class="arabic simple" start="6">
 <li>Para revisar los profiles asignados a cada FEMTO, nos posicionamos en la FC, en la pestaña Object Editor y hacemos click en la flecha del profile para ver los parámetros del mismo:</li>
 </ol>
 <img alt="../_images/pag3.3.png" class="align-center" src="../_images/pag3.3.png" />
@@ -289,33 +292,62 @@ Ver Link: <a class="reference external" href="../_static/images/das/Troubleshoot
 <p><strong><span style="color: #ff0000;">REALIZAR CAMBIOS EN FEMTO</span></strong></p><ol class="arabic simple">
 <li>Para realizar un cambio de parámetros, nos posicionamos en el valor del mismo, hacemos doble click y ponemos el nuevo valor.</li>
 <li>Para realizar un cambio de Profile, hacemos doble click y se habilita el listado de los distintos Profiles existentes (se deben revisar los parámetros que tiene cada uno de los Profiles de antemano para saber cuál es el nombre del que vamos a asignar)</li>
-<li>Luego se deben guardar los cambios en una Workorder. Para esto, una vez que realizamos los cambios vamos a la pestaña Workorder; hacemos click derecho sobre new workorder y seleccionamos la opción Save workorder On local file system.  (Se recomienda que el nombre del archivo tenga la acción que se llevará a cabo en esta WO y la celda en la que se realizará el cambio, por ej: ChangeLocationProfile_FBA509) y lo guardamos en el disco compartido \corpsaba-usrshareEngineerCalidadBibliotecaIndoor y nuevas tecnologiasFEMTOSNAPSHOT_WO</li>
+<li>Luego se deben guardar los cambios en una Workorder. Para esto, una vez que realizamos los cambios vamos a la pestaña Workorder; hacemos click derecho sobre new workorder y seleccionamos la opción Save workorder On local file system.  (Se recomienda que el nombre del archivo tenga la acción que se llevará a cabo en esta WO y la celda en la que se realizará el cambio, por ej: ChangeLocationProfile_BA509) y lo guardamos en el disco compartido \corpsaba-usrshareEngineerCalidadBibliotecaIndoor y nuevas tecnologiasFEMTOSNAPSHOT_WO</li>
 </ol>
 <img alt="../_images/pag5.png" class="align-center" src="../_images/pag5.png" />
 <ol class="arabic simple" start="4">
 <li>La WO consta de 2 archivos XXXXX-default.xwo y XXXXX -default_reverse.xwo. El primero contiene los cambios propiamente dichos y el segundo “deshace” estos cambios, por lo que es importante subir ambos archivos .xwo al servidor para ejecutarlos con el WMS ya que si fallaran los cambios se puede volver atrás ejecutando el –default_reverse.xwo. La ruta en donde deben subirse los archivos es Opt/Data/Nortel/CM XML/</li>
 </ol>
 <p><strong><span style="color: #ff0000;">EJECUTAR UNA WO EN EL WMS</span></strong></p><ol class="arabic simple">
-<li>Ingresar al WMS a través del SGD <a class="reference external" href="https://sgd04.oss.ar.telmex/sgd">https://sgd04.oss.ar.telmex/sgd</a> con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU 9353 WMS Femto con el usuario de WMS. IMPORTANTE: si solicita actualizar la versión de Java presionar la opción “Mas tarde”.</li>
+<li>Ingresar al WMS a través del SGD <a class="reference external" href="https://sgd03.oss.ar.telmex/sgd">https://sgd03.oss.ar.telmex/sgd</a> con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU 9353 WMS Femto con el usuario de WMS. IMPORTANTE: si solicita actualizar la versión de Java presionar la opción “Mas tarde”.</li>
 </ol>
 <p>2.      Ingresar a Configuration -&gt; Session Manager y Create new session, aqui también es aconsejable que el nombre de la sesión lleve el nombre de la celda a modificar y que tipo de cambio se va a ejecutar. Una vez creado el nombre, seleccionamos la WO, presionamos Add to list y luego Next. En la siguiente ventana, click en Launch.
 IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en el listado de Session Tasks -&gt; Terminate session.</p>
-<p><strong><span style="color: #ff0000;">DESCARGAR UN SNAPSHOT ACTUAL</span></strong></p><p>El Snapshot con la configuración de toda la red de ALU se puede descargar manualmente, para esto, en el WMS, vamos a Configuration -&gt; CM XML -&gt; Export Network. Seleccionamos UTRAN y tildamos la opción Compressed para que genere un .zip. En Directory dejamos la ruta que figura por defecto /cmXML/manualSnapshot; cargamos un nombre en File y luego click en Export now. El archivo .zip se guardará dentro del servidor de ALU por lo que hay que volver a conectarse por Filezilla al 10.105.109.28 Opt/Data/Nortel/CM XML/.</p>
+<p><strong><span style="color: #ff0000;">DESCARGAR UN SNAPSHOT ACTUAL</span></strong></p><p>El Snapshot con la configuración de toda la red de ALU se puede descargar manualmente, por ejemplo si se quiere verificar que hayan impactado los cambios realizados. Para esto, en el WMS, vamos a Configuration -&gt; CM XML -&gt; Export Network. Seleccionamos UTRAN y tildamos la opción Compressed para que genere un .zip. En Directory dejamos la ruta que figura por defecto /cmXML/manualSnapshot; cargamos un nombre en File y luego click en Export now. El archivo .zip se guardará dentro del servidor de ALU por lo que hay que volver a conectarse por Filezilla al 10.105.109.28 Opt/Data/Nortel/cmXML/manualSnapshot.</p>
 <p><strong><span style="color: #ff0000;">CONECTARSE A UNA FEMTO</span></strong></p><ol class="arabic simple">
-<li>A través de Putty conectarse al servidor 10.105.109.28 (SSH, puerto 22). El usuario y password para ingresar es el mismo que se utiliza para el WMS. Tipear <strong>bsrsorted</strong>  <strong>|grep FXXXX</strong>. Este comando nos mostrará las IP que tiene asignado para el túnel cada una de las FC. Copiar los últimos 2 octetos de la IP de la FC a la que nos vamos a conectar y tipear <strong>femto14 xxx.xxx</strong></li>
+<li>A través de Putty conectarse al servidor 10.105.109.28 (SSH, puerto 22). El usuario y password para ingresar es el mismo que se utiliza para el WMS. Tipear bsrsorted  <a href="#id3"><span class="problematic" id="id4">|</span></a>grep XXXXX (Se deben ingresar los primeros 5 caracteres del cell name, por ejemplo X4024). Este comando nos mostrará las IP que tiene asignado para el túnel cada una de las FC. Copiar los últimos 2 octetos de la IP de la FC a la que nos vamos a conectar y tipear femto14 xxx.xxx</li>
 </ol>
+<p>Si la FC tiene túnel, es decir si funciona la tx d la FC, deberíamos tener el prompt “<a class="reference external" href="mailto:root&#37;&#52;&#48;femto-xxxxxxxxxx">root<span>&#64;</span>femto-xxxxxxxxxx</a>:~#” como se muestra a continuación:</p>
 <img alt="../_images/pag10.png" class="align-center" src="../_images/pag10.png" />
+<p>Si la FC no tiene túnel, entonces quedará intentando conectar por unos segundos hasta que da timeout, como en el ejemplo:</p>
+<img alt="../_images/pag13.png" class="align-center" src="../_images/pag13.png" />
 <ol class="arabic simple" start="2">
-<li>Una vez conectado a la FC, tipeamos console y luego menu. A continuación aparece un listado de comandos que se pueden consultar.</li>
+<li>Una vez conectado a la FC, tipeamos console y luego menu. A continuación aparece un listado de comandos que se pueden consultar como por ejemplo:</li>
 </ol>
-<p><strong>Ejemplo chequeo de adyacencias</strong></p>
+<ul class="simple">
+<li>Radio encendido</li>
+</ul>
+<p>Ingresamos en la FC, tipeamos console y luego radioStatus. Con este comando podemos ver si el radio está habilitado, la banda en la que está la FC y la máxima potencia de tx:</p>
+<img alt="../_images/pag14.png" class="align-center" src="../_images/pag14.png" />
+<ul class="simple">
+<li>Chequeo de adyacencias</li>
+</ul>
 <p>Dentro de Menu, seleccionamos las opciones 13 (Macro Neighbour Menu ) y luego luego 1 (Dislplay Internal Handover Statistics (BRRM)), estos 2 comandos nos muestran las celdas macro que la FC está sniffeando con su HO attempts y HO successes.</p>
-<img alt="../_images/pag11.png" class="align-center" src="../_images/pag11.png" />
-<p><strong>Ejemplo chequeo CPICH</strong></p>
+<img alt="../_images/adyacencia.png" class="align-center" src="../_images/adyacencia.png" />
+<ul class="simple">
+<li>Chequeo CPICH</li>
+</ul>
 <p>Dentro de Menu seleccionamos las opciones 10 (CELL Menu); 4 (Get Cell data BRRM) y luego la opción 1 (Get current Pilot Primary CPICH Power).</p>
-<img alt="../_images/pag12.png" class="align-center" src="../_images/pag12.png" />
+<img alt="../_images/pag15.png" class="align-center" src="../_images/pag15.png" />
+<ul class="simple">
+<li>Status LEDs operativos</li>
+</ul>
+<p>Dentro de Menu, seleccionamos opción 7 (Status Check) y luego opción 2 (Ue Context Allocated). Esto nos da la información del estado operativo de la FC</p>
+<img alt="../_images/pag16.png" class="align-center" src="../_images/pag16.png" />
+<p>El LED de Phone, nos indica las llamadas cursadas por la FC:</p>
+<ul class="simple">
+<li>OFF: no hay llamadas de voz activas</li>
+<li>ON: por lo menos 1 llamada en curso.</li>
+<li>FLASH (intermitente): la FC está cursando el máximo de llamadas permitidas.</li>
+</ul>
+<p>El LED System, nos indica la disponibilidad de la FC:</p>
+<ul class="simple">
+<li>OFF: no se encuentra disponible</li>
+<li>ON: lista para proveer servicio</li>
+<li>FLASH (intermitente): el sistema está inicializando</li>
+</ul>
 <p><strong><span style="color: #ff0000;">ENCENDER O APAGAR EL RADIO DE UNA FEMTO</span></strong></p><ol class="arabic simple">
-<li>A través del SGD ingresamos al HDM; <a class="reference external" href="https://sgd04.oss.ar.telmex/sgd">https://sgd04.oss.ar.telmex/sgd</a> con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU HDM Femto con el usuario de HDM. <strong>IMPORTANTE</strong>: si solicita actualizar la versión de Java presionar la opción “Mas tarde”. El usuario y pass para el HDM también debe solicitarse a Emiliano Flores o a Tomas Ferreyra.</li>
+<li>A través del SGD ingresamos al HDM; <a class="reference external" href="https://sgd03.oss.ar.telmex/sgd">https://sgd03.oss.ar.telmex/sgd</a> con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU HDM Femto con el usuario de HDM. <strong>IMPORTANTE</strong>: si solicita actualizar la versión de Java presionar la opción “Mas tarde”. El usuario y pass para el HDM también se solicita por mail a Damian Pizzini/ Ricardo Bandini</li>
 </ol>
 <img alt="../_images/pag7.png" class="align-center" src="../_images/pag7.png" />
 <ol class="arabic simple" start="2">
@@ -325,6 +357,8 @@ IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en e
 <ol class="arabic simple" start="3">
 <li>Clickeamos el botón Manage y en Queued Functions seleccionamos la pestaña Queue Action, luego en Action se encuentra un listado de comandos como por ejemplo activar o desactivar el radio. Elegimos y clickeamos el botón Queue.</li>
 </ol>
+<img alt="../_images/pag8.png" class="align-center" src="../_images/pag8.png" />
+<p><strong><span style="color: #ff0000;">REINICIAR UNA FEMTO</span></strong></p><p>Clickeamos el botón Manage y en Queued Functions seleccionamos la pestaña Queue Function, luego en Function seleccionamos la opción Reboot y clickeamos el botón Queue.</p>
 <img alt="../_images/pag8.png" class="align-center" src="../_images/pag8.png" />
 <div class="section" id="guia-para-aceptacion">
 <h3>2.1. Guia para Aceptacion<a class="headerlink" href="#guia-para-aceptacion" title="Permalink to this headline">¶</a></h3>
@@ -339,7 +373,7 @@ Al recibir la aceptación se debe buscar tanto en Ledzite como en el sharepoint,
 <li>CAO_XX.pdf: este es el Conforme a Obra, tiene la descripción de lo que quedó instalado realmente y la conformidad del cliente.</li>
 <li>XX_TSS_POST. Pdf*: contiene el walktest  y los resultados de las pruebas que se realizan una vez concluida la instalación. Ésta sería la auditoría final una vez que finalizó la obra.</li>
 </ul>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Si es una HC, puede que no tenga medición posterior a la instalación. Esto deberá consultarse con el grupo Care Calidad.</p>
+<p><a href="#id5"><span class="problematic" id="id6">*</span></a>Si es una HC, puede que no tenga medición posterior a la instalación. Esto deberá consultarse con el grupo Care Calidad.</p>
 <p>Esta documentación debe controlarse tal como se hace con la red Macro. Verificar que lo instalado coincida con lo diseñado; que de existir alguna modificación en la instalación física o en la parametrización, ésto quede aclarado en la documentación correspondiente. Dentro del documento POST hay un resumen de configuración que debe coincidir con la RF Sheet (de no ser así se debe verificar si contamos con la última versión de RF Sheet)</p>
 <p><strong>PARÁMETROS A CONTROLAR CON RF SHEET (CORE ALU VS CORE CLARO)</strong></p>
 <p>Se debe verificar que la parametrización de la FC sea según lo diseñado en la RF Sheet. Para esto es necesario contrastar los parámetros en el WPS en un snapshot actualizado (consultar la sección REVISAR CONFIGURACION DE FEMTO en la wiki de optimización) ya que los valores que figuran en el CME son solamente del elemento virtual y no los que realmente tiene configurado la FC:</p>
@@ -357,7 +391,7 @@ Al recibir la aceptación se debe buscar tanto en Ledzite como en el sharepoint,
 <li>Location Profile: agrupa parámetros de RF</li>
 <li>Profile: agrupa parámetros de movilidad*</li>
 </ul>
-<p><a href="#id3"><span class="problematic" id="id4">*</span></a>Dentro de este Profile se especifica en el mismo campo si la FC es Gateway o no. Por convención, solo se aclara cuando no son GW, por ej <a class="reference external" href="mailto:Profile/4216_Metro_Indoor_F2FHO_no_GW&#37;&#52;&#48;default">Profile/4216_Metro_Indoor_F2FHO_no_GW<span>&#64;</span>default</a>.</p>
+<p><a href="#id7"><span class="problematic" id="id8">*</span></a>Dentro de este Profile se especifica en el mismo campo si la FC es Gateway o no. Por convención, solo se aclara cuando no son GW, por ej <a class="reference external" href="mailto:Profile/4216_Metro_Indoor_F2FHO_no_GW&#37;&#52;&#48;default">Profile/4216_Metro_Indoor_F2FHO_no_GW<span>&#64;</span>default</a>.</p>
 <p>Algunos Profiles, tienen más de una carpeta BSRProfile; cada una de estas carpetas contiene agrupados los parámetros para distintas versiones de WPS. Al día de hoy debemos corroborar los parámetros dentro de la versión 14_02_00.</p>
 <p><strong>KPIS</strong></p>
 <p>Los kpis a controlar se deben consultar en IBWH para tener en cuenta los 5 días con más tráfico de la FC. Bajar el Excel desde SMART, ACCESO -&gt; FEMTOCELL -&gt; CELL -&gt; REPORTE AREA OPTIMIZACION</p>

@@ -57,12 +57,21 @@ Optimizar las soluciones Indoor y nuevas tecnologías de red de acceso, analizan
 
 	<p><span style="color: #ff0000;"><strong>CONSIDERACIONES GENERALES</strong></span></p>
 
-Debido a que las herramientas necesarias para la gestión de FEMTO son varias y requieren distintas versiones de JAVA (que muchas veces no son compatibles con el resto de las herramientas que utilizamos), se instalaron todas en el Servidor SGD4. Por esto antes de comenzar con la gestión de las FC, se deben solicitar los accesos correspondientes. Estos usuarios se solicitan vía Mail a Emiliano Flores / Tomas Ferreyra:
+Debido a que las herramientas necesarias para la gestión de FEMTO son varias y requieren distintas versiones de JAVA (que muchas veces no son compatibles con el resto de las herramientas que utilizamos), se instalaron todas en el Servidor SGD3. Por esto antes de comenzar con la gestión de las FC, se deben solicitar los accesos correspondientes:
 
-•	SGD4 (user y pass de red pero debe tener permisos)
-•	Acceso al WMS (este mismo se utilizará para ingresar al Putty)
+•	SGD3 (user y pass de red pero debe tener permisos)
+•	Acceso al WMS*
 •	Acceso de **escritura y lectura** al SFTP 10.105.109.28
 •	Acceso al HDM 
+•	Acceso al NPO de Femto Cell
+
+*: este mismo usuario se utilizará para ingresar al Putty y al servidor (10.105.109.28),en donde se almacenan los Snapshots. 
+
+Para SGD se debe solicitar el acceso a través de TR en la ruta:
+
+OPERACIONES --> CTROL.GESTION.ADMIN --> SOPORTE APLICACIONES --> USUARIO DCN
+
+Para el resto de las herramientas de ALU se debe solicitar vía mail a Damian Pizzini/ Ricardo Bandini.
 
 
 .. raw:: html 
@@ -85,19 +94,21 @@ Debido a que las herramientas necesarias para la gestión de FEMTO son varias y 
 
   	<li>Ejecutarlo a través del navegador WaterxFox (familia Mozilla, link <a href="../_static/images/FEMTO/WaterfoxPortable_52.0.1_English.paf.exe">descarga</a>)</li>
 
-    <li>Tener instalada la versión de Java que se esté utilizando pero para 32 bits y para 64 bits, de ser posible la 1.6.</li>
+    <li>Se recomiendan los java 8 y 6 para el correcto funcionamiento. Se deben tener instaladas las versiones para 32 y para 64 bits (para descargar http://storage01.oss.ar.telmex/java/ ). Para esto verificar que exista la carpeta Java dentro de C:\Archivos de programa y C:\Archivo de programa (x86).</li>
 
 
-    <li>De fallar al momento de cargar alguna de las aplicaciones, intentar también desde el https://sgd03.oss.ar.telmex/sgd</li>
+    <li>De fallar al momento de cargar alguna de las aplicaciones, intentar también desde el https://sgd04.oss.ar.telmex/sgd</li>
 
 
     <li>Chequear dentro de la consola de Java (Panel de Control - > Java), en la pestaña Avanzado dentro de la opción Java Predeterminado para Navegadores debe estar tildada la opción Familia Mozilla.</li>
+
+    <li>Se debe agregar el link de SGD al listado de excepciones de sitios de Java (Panel de Control -> Java -> Seguridad -> Editar lista de sitios</li>
 
   </ul>
   </td>
   </table><br/>
 
-La configuración de toda la red ALU se baja diariamente en un archivo (Snapshot) que es el equivalente a un “Dump” desde el Netact y se sube al servidor SFTP. Este archivo se maneja con el WPS que es el SW de gestión de ALU (Equivalente al CM Editor del Netact). Toda la información de las distintas FEMTOs, así como los Profiles que son sets de parámetros que se agrupan dentro de una categoría:
+La configuración de toda la red ALU se baja diariamente en un archivo (Snapshot) que es el equivalente a un “Dump” desde el Netact y se sube al servidor SFTP. Este archivo se maneja con el WPS que es el SW de gestión de ALU (Equivalente al CM Editor del Netact). Esta herramienta sirve para revisar la parametrización de las distintas FEMTOs, como por ejemplo los Profiles que son sets de parámetros que se agrupan dentro de una categoría:
 
 •	Hardware Profile: agrupa los parámetros de potencia (CPICH, max power limit, etc)
 •	Location Profile: agrupa parámetros de RF (UARFCN, frequency BAND, etc)
@@ -112,26 +123,21 @@ La configuración de toda la red ALU se baja diariamente en un archivo (Snapshot
 	<p><span style="color: #ff0000;"><strong>REVISAR CONFIGURACION DE FEMTO</strong></span></p>
 
 
-1.	Conectarse al SFTP 10.105.109.28 a través de un gestor como FileZilla_setup_. El usuario y password se gestiona con Emiliano Flores o Tomás Ferreyra (es el mismo que se utiliza para WMS, primero se debe ingresar al WMS, en el primer ingreso pide cambiar la clave y una vez que este usuario este generado y ya se haya ingresado al WMS, se puede utilizar en el FTP)
+1.	Para poder conectarse al SFTP 10.105.109.28 se debe utilizar un gestor como Filezilla. El usuario y password se gestiona con Damian Pizzini/ Ricardo Bandini (ES EL MISMO QUE SE UTILIZA PARA WMS, PRIMERO SE DEBE INGRESAR AL WMS, EN EL PRIMER INGRESO PIDE CAMBIAR LA CLAVE Y UNA VEZ QUE ESTE USUARIO ESTE GENERADO Y YA SE HAYA INGRESADO AL WMS, SE PUEDE UTILIZAR EN EL FTP)
 
-2.	Ir al raíz e ingresar en la ruta /opt/nortel/data/cmXML/scheduledExport y buscar el último snapshot del día “UTRAN-SNAP20170116xxxxxx.xml” y guardarlo en el disco compartido \\corpsaba-usr\share\Engineer\Calidad\Biblioteca\Indoor y nuevas tecnologias\FEMTO\SNAPSHOT_WO\ 
+2.	Ingresar en la ruta /opt/nortel/data/cmXML/scheduledExport y buscar el último snapshot del día “UTRAN-SNAP20170116xxxxxx.xml” y guardarlo en el disco compartido \\corpsaba-usr\share\Engineer\Calidad\Biblioteca\Indoor y nuevas tecnologias\FEMTO\SNAPSHOT_WO\ 
 
 .. image:: ../_static/images/FEMTO/pag2.png
   :align: center
 
-3.	Cambiar grafico
+3.	Ingresar al ALU WPS Femto 4.1.14.2 desde el SGD3 https://sgd03.oss.ar.telmex/sgd con usuario y password de red.
 
-.. image:: ../_static/images/FEMTO/pag9.png
-  :align: center
-
-4.  Ingresar al WPS desde el SGD4 https://sgd04.oss.ar.telmex/sgd con usuario y password de red.
-
-5.	Abrir el snapshot File-> Open->Snapshot
+4.	Abrir el snapshot File-> Open->Snapshot.
 
 .. image:: ../_static/images/FEMTO/pag2.2.png
   :align: center
 
-6.	Dentro de FemtoCluster/390@default se encuentran las Femtos de Argentina y se dividen en 2 grupos Femto/xx y FemtoGroup/xx, según tengan uno o más sectores. Si se conoce el Cell id se busca en Filter On por texto Femto/cellid o FemtoGroup/cellid:
+5.	Dentro de FemtoCluster/390@default se encuentran las Femtos de Argentina y se dividen en 2 grupos Femto/xx y FemtoGroup/xx, según tengan uno o más sectores. Si se conoce el Cell id se busca en Filter On por texto Femto/cellid o FemtoGroup/cellid:
 
 .. image:: ../_static/images/FEMTO/pag3.png
   :align: center
@@ -144,7 +150,7 @@ Si no se conoce el Cell id y se tiene el cell name, seleccionamos todas las Femt
 En caso de ser un Femto Group, seleccionamos y en Tabular Editor filtramos sobre el campo GroupName el nombre de la FC.
 
 
-7.	Para revisar los profiles asignados a cada FEMTO, nos posicionamos en la FC, en la pestaña Object Editor y hacemos click en la flecha del profile para ver los parámetros del mismo: 
+6.	Para revisar los profiles asignados a cada FEMTO, nos posicionamos en la FC, en la pestaña Object Editor y hacemos click en la flecha del profile para ver los parámetros del mismo: 
 
 .. image:: ../_static/images/FEMTO/pag3.3.png
   :align: center
@@ -169,7 +175,7 @@ La versión que está en vigencia es la 4.1.14.2 por lo que de existir más de u
 
 1.	Para realizar un cambio de parámetros, nos posicionamos en el valor del mismo, hacemos doble click y ponemos el nuevo valor.
 2.	Para realizar un cambio de Profile, hacemos doble click y se habilita el listado de los distintos Profiles existentes (se deben revisar los parámetros que tiene cada uno de los Profiles de antemano para saber cuál es el nombre del que vamos a asignar)
-3.	Luego se deben guardar los cambios en una Workorder. Para esto, una vez que realizamos los cambios vamos a la pestaña Workorder; hacemos click derecho sobre new workorder y seleccionamos la opción Save workorder On local file system.  (Se recomienda que el nombre del archivo tenga la acción que se llevará a cabo en esta WO y la celda en la que se realizará el cambio, por ej: ChangeLocationProfile_FBA509) y lo guardamos en el disco compartido \\corpsaba-usr\share\Engineer\Calidad\Biblioteca\Indoor y nuevas tecnologias\FEMTO\SNAPSHOT_WO\
+3.	Luego se deben guardar los cambios en una Workorder. Para esto, una vez que realizamos los cambios vamos a la pestaña Workorder; hacemos click derecho sobre new workorder y seleccionamos la opción Save workorder On local file system.  (Se recomienda que el nombre del archivo tenga la acción que se llevará a cabo en esta WO y la celda en la que se realizará el cambio, por ej: ChangeLocationProfile_BA509) y lo guardamos en el disco compartido \\corpsaba-usr\share\Engineer\Calidad\Biblioteca\Indoor y nuevas tecnologias\FEMTO\SNAPSHOT_WO\
 
 
 .. image:: ../_static/images/FEMTO/pag5.png
@@ -183,7 +189,7 @@ La versión que está en vigencia es la 4.1.14.2 por lo que de existir más de u
 
 	<p><strong><span style="color: #ff0000;">EJECUTAR UNA WO EN EL WMS</span></strong></p>
 
-1.	Ingresar al WMS a través del SGD https://sgd04.oss.ar.telmex/sgd con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU 9353 WMS Femto con el usuario de WMS. IMPORTANTE: si solicita actualizar la versión de Java presionar la opción “Mas tarde”.
+1.	Ingresar al WMS a través del SGD https://sgd03.oss.ar.telmex/sgd con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU 9353 WMS Femto con el usuario de WMS. IMPORTANTE: si solicita actualizar la versión de Java presionar la opción “Mas tarde”.
 2.	Ingresar a Configuration -> Session Manager y Create new session, aqui también es aconsejable que el nombre de la sesión lleve el nombre de la celda a modificar y que tipo de cambio se va a ejecutar. Una vez creado el nombre, seleccionamos la WO, presionamos Add to list y luego Next. En la siguiente ventana, click en Launch.
 IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en el listado de Session Tasks -> Terminate session.
 
@@ -191,40 +197,74 @@ IMPORTANTE: una vez que terminó de correr la WO, se debe cerrar la sesión en e
 
 	<p><strong><span style="color: #ff0000;">DESCARGAR UN SNAPSHOT ACTUAL</span></strong></p>
 
-El Snapshot con la configuración de toda la red de ALU se puede descargar manualmente, para esto, en el WMS, vamos a Configuration -> CM XML -> Export Network. Seleccionamos UTRAN y tildamos la opción Compressed para que genere un .zip. En Directory dejamos la ruta que figura por defecto /cmXML/manualSnapshot; cargamos un nombre en File y luego click en Export now. El archivo .zip se guardará dentro del servidor de ALU por lo que hay que volver a conectarse por Filezilla al 10.105.109.28 Opt/Data/Nortel/CM XML/.
+El Snapshot con la configuración de toda la red de ALU se puede descargar manualmente, por ejemplo si se quiere verificar que hayan impactado los cambios realizados. Para esto, en el WMS, vamos a Configuration -> CM XML -> Export Network. Seleccionamos UTRAN y tildamos la opción Compressed para que genere un .zip. En Directory dejamos la ruta que figura por defecto /cmXML/manualSnapshot; cargamos un nombre en File y luego click en Export now. El archivo .zip se guardará dentro del servidor de ALU por lo que hay que volver a conectarse por Filezilla al 10.105.109.28 Opt/Data/Nortel/cmXML/manualSnapshot.
 
 
 .. raw:: html 
 
 	<p><strong><span style="color: #ff0000;">CONECTARSE A UNA FEMTO</span></strong></p>
 
-1.	A través de Putty conectarse al servidor 10.105.109.28 (SSH, puerto 22). El usuario y password para ingresar es el mismo que se utiliza para el WMS. Tipear **bsrsorted**  **|grep FXXXX**. Este comando nos mostrará las IP que tiene asignado para el túnel cada una de las FC. Copiar los últimos 2 octetos de la IP de la FC a la que nos vamos a conectar y tipear **femto14 xxx.xxx**
+1.	A través de Putty conectarse al servidor 10.105.109.28 (SSH, puerto 22). El usuario y password para ingresar es el mismo que se utiliza para el WMS. Tipear bsrsorted  |grep XXXXX (Se deben ingresar los primeros 5 caracteres del cell name, por ejemplo X4024). Este comando nos mostrará las IP que tiene asignado para el túnel cada una de las FC. Copiar los últimos 2 octetos de la IP de la FC a la que nos vamos a conectar y tipear femto14 xxx.xxx
+
+Si la FC tiene túnel, es decir si funciona la tx d la FC, deberíamos tener el prompt “root@femto-xxxxxxxxxx:~#” como se muestra a continuación:
 
 .. image:: ../_static/images/FEMTO/pag10.png
   :align: center
 
-2.	Una vez conectado a la FC, tipeamos console y luego menu. A continuación aparece un listado de comandos que se pueden consultar. 
+Si la FC no tiene túnel, entonces quedará intentando conectar por unos segundos hasta que da timeout, como en el ejemplo: 
 
-**Ejemplo chequeo de adyacencias**
+.. image:: ../_static/images/FEMTO/pag13.png
+  :align: center
+
+2.	Una vez conectado a la FC, tipeamos console y luego menu. A continuación aparece un listado de comandos que se pueden consultar como por ejemplo:
+
++ Radio encendido
+
+Ingresamos en la FC, tipeamos console y luego radioStatus. Con este comando podemos ver si el radio está habilitado, la banda en la que está la FC y la máxima potencia de tx:
+
+.. image:: ../_static/images/FEMTO/pag14.png
+  :align: center
+
++ Chequeo de adyacencias
 
 Dentro de Menu, seleccionamos las opciones 13 (Macro Neighbour Menu ) y luego luego 1 (Dislplay Internal Handover Statistics (BRRM)), estos 2 comandos nos muestran las celdas macro que la FC está sniffeando con su HO attempts y HO successes.
 
-.. image:: ../_static/images/FEMTO/pag11.png
+.. image:: ../_static/images/FEMTO/adyacencia.png
   :align: center
 
-**Ejemplo chequeo CPICH**
+
++ Chequeo CPICH
 
 Dentro de Menu seleccionamos las opciones 10 (CELL Menu); 4 (Get Cell data BRRM) y luego la opción 1 (Get current Pilot Primary CPICH Power).
 
-.. image:: ../_static/images/FEMTO/pag12.png
+.. image:: ../_static/images/FEMTO/pag15.png
   :align: center
+
++ Status LEDs operativos
+
+Dentro de Menu, seleccionamos opción 7 (Status Check) y luego opción 2 (Ue Context Allocated). Esto nos da la información del estado operativo de la FC
+
+.. image:: ../_static/images/FEMTO/pag16.png
+  :align: center
+
+El LED de Phone, nos indica las llamadas cursadas por la FC:
+
+- OFF: no hay llamadas de voz activas
+- ON: por lo menos 1 llamada en curso.
+- FLASH (intermitente): la FC está cursando el máximo de llamadas permitidas.
+
+El LED System, nos indica la disponibilidad de la FC:
+
+- OFF: no se encuentra disponible
+- ON: lista para proveer servicio
+- FLASH (intermitente): el sistema está inicializando
+
 
 .. raw:: html 
 
 	<p><strong><span style="color: #ff0000;">ENCENDER O APAGAR EL RADIO DE UNA FEMTO</span></strong></p>
 
-1.	A través del SGD ingresamos al HDM; https://sgd04.oss.ar.telmex/sgd con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU HDM Femto con el usuario de HDM. **IMPORTANTE**: si solicita actualizar la versión de Java presionar la opción “Mas tarde”. El usuario y pass para el HDM también debe solicitarse a Emiliano Flores o a Tomas Ferreyra.
-
+1.	A través del SGD ingresamos al HDM; https://sgd03.oss.ar.telmex/sgd con usuario y pass de red en el primer logueo para acceder a la máquina virtual y luego para acceder al ALU HDM Femto con el usuario de HDM. **IMPORTANTE**: si solicita actualizar la versión de Java presionar la opción “Mas tarde”. El usuario y pass para el HDM también se solicita por mail a Damian Pizzini/ Ricardo Bandini 
 
 .. image:: ../_static/images/FEMTO/pag7.png
   :align: center
@@ -238,6 +278,17 @@ Dentro de Menu seleccionamos las opciones 10 (CELL Menu); 4 (Get Cell data BRRM)
 
 .. image:: ../_static/images/FEMTO/pag8.png
   :align: center
+
+
+.. raw:: html 
+
+	<p><strong><span style="color: #ff0000;">REINICIAR UNA FEMTO</span></strong></p>
+
+Clickeamos el botón Manage y en Queued Functions seleccionamos la pestaña Queue Function, luego en Function seleccionamos la opción Reboot y clickeamos el botón Queue.
+
+.. image:: ../_static/images/FEMTO/pag8.png
+  :align: center
+
 
 2.1. Guia para Aceptacion
 **************
