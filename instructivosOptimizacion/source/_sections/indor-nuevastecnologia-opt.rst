@@ -285,7 +285,7 @@ El LED System, nos indica la disponibilidad de la FC:
 
 Clickeamos el botón Manage y en Queued Functions seleccionamos la pestaña Queue Function, luego en Function seleccionamos la opción Reboot y clickeamos el botón Queue.
 
-.. image:: ../_static/images/FEMTO/pag8.png
+.. image:: ../_static/images/FEMTO/pag18.png
   :align: center
 
 
